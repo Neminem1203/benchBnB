@@ -7,7 +7,8 @@ class Benches extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchBenches();
+    this.props.fetchBenches({ northEast: { lat: 37.79971, lng: -122.39208 }, southWest: { lat: 37.77187, lng: -122.47791 } });
+    // dispatch(fetchBenches({northEast:{lat:50,lng: 0}, southWest: {lat: 0, lng: -140}})) // use this in window to fetch all
   }
   render(){
     // debugger
