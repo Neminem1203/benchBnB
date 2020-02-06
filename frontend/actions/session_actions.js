@@ -6,18 +6,15 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 
 export const login = (user) => (dispatch) => {
-  dispatch (SessionAPIUtil.login(user))
-  .then(payload => dispatch(receiveCurrentUser(payload), errors => dispatch(receiveErrors(errors))));
+  return SessionAPIUtil.login(user).then(payload => dispatch(receiveCurrentUser(payload)), errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {
-  dispatch (SessionAPIUtil.logout())
-  .then(payload => dispatch(logoutCurrentUser()), errors => dispatch(receiveErrors(errors)));
+  return SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()), errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const signup = (user) => (dispatch) => {
-  dispatch (SessionAPIUtil.signup(user))
-  .then(payload => dispatch(receiveCurrentUser(payload)),  errors => dispatch(receiveErrors(errors)));
+  return SessionAPIUtil.signup(user).then(payload => dispatch(receiveCurrentUser(payload)), errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const receiveCurrentUser = (currentUser) => {
