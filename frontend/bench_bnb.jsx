@@ -4,8 +4,9 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 // testing purposes
-import {signup, logout} from './util/session_api_util';
-import {login} from "./actions/session_actions";
+import {fetchBenches} from "./actions/benches_actions";
+// import {} from './util/session_api_util';
+import {signup, login, logout} from "./actions/session_actions";
 
 let preloadedState = {}
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,4 +31,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.signup = signup; 
   window.login = login; 
   window.logout = logout;
+  window.fetchBenches = fetchBenches;
 });
