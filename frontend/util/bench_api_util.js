@@ -1,10 +1,10 @@
-export const fetchBenches = (filters) =>{
-  debugger
-  const {northEast, southWest} = filters;
+export const fetchBenches = (bounds) =>{
+  // const {northEast, southWest} = filters;
+  // debugger
   return $.ajax({
     method: "GET",
     url: "/api/benches",
-    data: {bounds: filters},
+    data: {bounds},
     error: error => console.log(error)
   });
 };

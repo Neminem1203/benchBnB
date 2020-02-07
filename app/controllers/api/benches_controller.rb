@@ -1,4 +1,5 @@
 class Api::BenchesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @benches = Bench.in_bounds(params[:bounds])
     # @benches = Bench.all
@@ -16,6 +17,6 @@ class Api::BenchesController < ApplicationController
 
   private
   def coords
-    params.require(:bench).permit(:description, :lat, :lng)
+    params.require(:bench).permit(:description, :seats, :lat, :lng)
   end
 end
